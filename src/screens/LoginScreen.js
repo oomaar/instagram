@@ -2,6 +2,7 @@ import { useContext, useEffect, useState } from "react";
 import { useHistory } from "react-router";
 import { Link } from "react-router-dom";
 import { FirebaseContext } from "../context/firebase";
+import * as ROUTES from "../constants/routes";
 
 const LoginScreen = () => {
     const history = useHistory();
@@ -12,12 +13,24 @@ const LoginScreen = () => {
 
     const isInvalid = emailAddress === '' || password === '';
 
-    const handleLogin = () => { };
+    const handleLogin = async e => {
+        e.preventDefault();
+
+        try {
+            await firebase.auth().signInWithEmailAndPassword(emailAddress, password);
+            history.push(ROUTES.DASHBOARD);
+
+        } catch (error) {
+            setEmailAddress("");
+            setPassword("");
+            setError(error.message);
+        }
+    };
 
     useEffect(() => {
         document.title = 'Login - Instagram';
-
     }, []);
+
     return (
         <div className="container flex flex-col-reverse sm:flex-row mx-auto max-w-screen-md items-center 
         sm:h-screen py-8 px-8">
@@ -32,7 +45,7 @@ const LoginScreen = () => {
                     {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
                     <form className="" onSubmit={handleLogin} method="POST">
                         <input
-                            type="text"
+                            type="email"
                             aria-label="Enter your email address"
                             placeholder="Email Address"
                             className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary
