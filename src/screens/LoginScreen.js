@@ -49,6 +49,7 @@ const LoginScreen = () => {
                             placeholder="Email Address"
                             className="loginscreen__input"
                             onChange={({ target }) => setEmailAddress(target.value)}
+                            value={emailAddress}
                         />
                         <input
                             type="password"
@@ -56,6 +57,7 @@ const LoginScreen = () => {
                             placeholder="Password"
                             className="loginscreen__input"
                             onChange={({ target }) => setPassword(target.value)}
+                            value={password}
                         />
                         <button
                             disabled={isInvalid}
@@ -69,7 +71,7 @@ const LoginScreen = () => {
                 <div className="loginscreen__signupContainer">
                     <p className="loginscreen__signupText">
                         Don't have an account? {``}
-                    <Link to="/signup" className="loginscreen__signupLink">
+                    <Link to={ROUTES.SIGN_UP} className="loginscreen__signupLink">
                         Sign Up
                     </Link>
                     </p>
