@@ -1,3 +1,58 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+    /* loginscreen styles START */
+    .loginscreen {
+        @apply container flex flex-col-reverse sm:flex-row mx-auto max-w-screen-md items-center 
+        sm:h-screen py-8 px-8;
+    }
+
+    .loginscreen__imageContainer {
+        @apply flex w-3/5;
+    }
+
+    .loginscreen__rightContaier {
+        @apply flex flex-col sm:w-2/5;
+    }
+
+    .loginscreen__formContaier {
+        @apply flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded;
+    }
+
+    .loginscreen__logoContainer {
+        @apply flex justify-center w-full;
+    }
+
+    .loginscreen__logo {
+        @apply mt-2 w-6/12 mb-4;
+    }
+
+    .loginscreen__error {
+        @apply mb-4 text-xs text-red-primary;
+    }
+
+    .loginscreen__input {
+        @apply text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary
+        rounded mb-2;
+    }
+
+    .loginscreen__loginBtn {
+        @apply bg-blue-medium text-white w-full rounded h-8 font-bold;
+    }
+
+    .loginscreen__signupContainer {
+        @apply flex justify-center items-center flex-col w-full bg-white p-4 border 
+        border-gray-primary rounded;
+    }
+
+    .loginscreen__signupText {
+        @apply text-sm;
+    }
+
+    .loginscreen__signupLink {
+        @apply font-bold text-blue-medium;
+    }
+    /* loginscreen styles END */
+}
