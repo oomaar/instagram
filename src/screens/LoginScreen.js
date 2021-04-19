@@ -32,49 +32,44 @@ const LoginScreen = () => {
     }, []);
 
     return (
-        <div className="container flex flex-col-reverse sm:flex-row mx-auto max-w-screen-md items-center 
-        sm:h-screen py-8 px-8">
-            <div className="flex w-3/5">
+        <div className="loginscreen">
+            <div className="loginscreen__imageContainer">
                 <img src="/images/iphone-with-profile.jpg" alt="iPhone with instagram" />
             </div>
-            <div className="flex flex-col sm:w-2/5">
-                <div className="flex flex-col items-center bg-white p-4 border border-gray-primary mb-4 rounded">
-                    <h1 className="flex justify-center w-full">
-                        <img src="/images/logo.png" alt="Instagram" className="mt-2 w-6/12 mb-4" />
+            <div className="loginscreen__rightContaier">
+                <div className="loginscreen__formContaier">
+                    <h1 className="loginscreen__logoContainer">
+                        <img src="/images/logo.png" alt="Instagram" className="loginscreen__logo" />
                     </h1>
-                    {error && <p className="mb-4 text-xs text-red-primary">{error}</p>}
-                    <form className="" onSubmit={handleLogin} method="POST">
+                    {error && <p className="loginscreen__error">{error}</p>}
+                    <form onSubmit={handleLogin} method="POST">
                         <input
                             type="email"
                             aria-label="Enter your email address"
                             placeholder="Email Address"
-                            className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary
-                        rounded mb-2"
+                            className="loginscreen__input"
                             onChange={({ target }) => setEmailAddress(target.value)}
                         />
                         <input
                             type="password"
                             aria-label="Enter your password"
                             placeholder="Password"
-                            className="text-sm text-gray-base w-full mr-3 py-5 px-4 h-2 border border-gray-primary
-                        rounded mb-2"
+                            className="loginscreen__input"
                             onChange={({ target }) => setPassword(target.value)}
                         />
                         <button
                             disabled={isInvalid}
                             type="submit"
-                            className={`bg-blue-medium text-white w-full rounded h-8 font-bold
-                        ${isInvalid && `opacity-50`}`}
+                            className={`loginscreen__loginBtn ${isInvalid && `opacity-50`}`}
                         >
                             Log In
                     </button>
                     </form>
                 </div>
-                <div className="flex justify-center items-center flex-col w-full bg-white p-4 border 
-                border-gray-primary rounded">
-                    <p className="text-sm">
+                <div className="loginscreen__signupContainer">
+                    <p className="loginscreen__signupText">
                         Don't have an account? {``}
-                    <Link to="/signup" className="font-bold text-blue-medium">
+                    <Link to="/signup" className="loginscreen__signupLink">
                         Sign Up
                     </Link>
                     </p>
